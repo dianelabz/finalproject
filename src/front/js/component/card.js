@@ -6,7 +6,7 @@ export const Card = (props) => {
       <img className="img-fluid" src={props.imagen} />
       <div className="card-body">
         <h5 className="card-title">{props.titulo}</h5>
-        <p className="card-text">{props.informacion}</p>
+        <button className="boton">{props.boton}</button>
       </div>
     </div>
   );
