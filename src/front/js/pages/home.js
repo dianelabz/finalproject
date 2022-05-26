@@ -20,11 +20,9 @@ export const Home = () => {
       </div>
       <div className="container mt-5">
         <div className="row mt-5">
-          <ul>
-            {store.home.map(function (object) {
-              return <Card object={object} />;
-            })}
-          </ul>
+          {store.home.map(function (object) {
+            return <Card object={object} />;
+          })}
         </div>
       </div>
     </div>
