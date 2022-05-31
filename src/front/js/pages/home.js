@@ -12,19 +12,20 @@ export const Home = () => {
     actions.getHome();
   }, []);
   return (
-    <div className="container-fluid">
-      <div className="titulo">
-        <h1 className="text-black" style={{}}>
-          Peliculas y Series
-        </h1>
-      </div>
-      <div className="container mt-5">
-        <div className="row mt-5">
-          {store.home.map(function (object) {
-            return <Card object={object} />;
-          })}
+    <>
+      <div className="row">
+        <h1 className="titulo">Películas y Series</h1>
+        <div className="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-3 pt-2 mb-3">
+          {store.home.map((home, i) => (
+            <div className="col-md-3">
+              <Card
+                data={home}
+                image="https://m.media-amazon.com/images/M/MV5BYjBlZGZkODEtNjUxMC00NWY1LWJkYWUtYzY2NDIxZjkwZmQyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
+              />
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
