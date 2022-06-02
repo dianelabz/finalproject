@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand">NoSepo</a>
+        <a className="navbar-brand">Watchpo</a>
         <form className="d-flex">
           <input
             className="form-control me-2"
