@@ -20,7 +20,7 @@ ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-jwt = JWTManager()
+jwt = JWTManager(app)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -84,10 +84,22 @@ def iniciar_sesion():
 
     data = request.get_json()
     oneUser = User.query.filter_by(email=data['email'], password= data['password']).first()
-    if(OneUser):
-        return "existe"
+    if(oneUser):
+        expiracion = datetime.timedelta(minutes=15)
+        acceso = create_access_token(identity=oneUser.email)
+        response = {"Token":acceso , "expiracion":expiracion.total_seconds(), "email":oneUser.email}
+        return jsonify(response)
     else:
-        return "no existe"
+        return "Mail o contraseña no son correctos"
+
+@app.route("/privado", methods=['GET'])
+@jwt_required()
+def acceso_privado():
+    token = get_jwt_identity()
+    return jsonify({
+        "mensaje": "Acceso a espacio privado concedido",
+        "usuario" : token
+    })
 
 
 
