@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
@@ -9,7 +10,7 @@ export const Home = () => {
     email: "",
     password: "",
   });
-
+  const history = useHistory();
   const HandleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user);
@@ -21,7 +22,7 @@ export const Home = () => {
         <h1>Login</h1>
       </div>
       <div className="input mt-5">
-        <form>
+        <form onSubmit={(e) => actions.onSubmit(e, user, history)}>
           <input
             name="email"
             type="text"
@@ -38,13 +39,13 @@ export const Home = () => {
             className="form-control me-2"
             placeholder="Password"
           />
+          <button class="btn btn-dark" type="submit">
+            Login
+          </button>
+          <button className="btn btn-online-dark" type="submit">
+            Recuperar contraseña
+          </button>
         </form>
-        <button class="btn btn-dark" type="submit">
-          Login
-        </button>
-        <button className="btn btn-online-dark" type="submit">
-          Recuperar contraseña
-        </button>
       </div>
     </div>
   );

@@ -87,10 +87,12 @@ def iniciar_sesion():
     if(oneUser):
         expiracion = datetime.timedelta(minutes=15)
         acceso = create_access_token(identity=oneUser.email)
-        response = {"Token":acceso , "expiracion":expiracion.total_seconds(), "email":oneUser.email}
+        response = {"Token":acceso , "expiracion":expiracion.total_seconds(), "user":oneUser.serialize(), "msg":"¡Bienvenid@ a Watchpo!"}
         return jsonify(response)
     else:
-        return "Mail o contraseña no son correctos"
+        return jsonify({
+            "msg":"Mail o contraseña incorrecta",
+        }),400
 
 @app.route("/privado", methods=['GET'])
 @jwt_required()
