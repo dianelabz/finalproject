@@ -1,26 +1,21 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import { Link } from "react-router-dom";
 
-export const Home = () => {
+export const Datos = () => {
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({
     email: "",
     password: "",
+    rememberPassword: "",
+    name: "",
+    lastName: "",
   });
-  const history = useHistory();
-  const HandleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
-  };
 
   return (
     <div className="container">
       <div className="text-center mt-5">
-        <h1>Login</h1>
+        <h1>Registro</h1>
       </div>
       <div className="input mt-5">
         <form onSubmit={(e) => actions.onSubmit(e, user, history)}>
@@ -28,29 +23,40 @@ export const Home = () => {
             name="email"
             type="text"
             value={user.email}
-            onChange={HandleChange}
-            className="form-control me-2"
+            className="pt-2 form-control me-2"
             placeholder="Correo"
           />
           <input
             name="password"
             type="password"
             value={user.password}
-            onChange={HandleChange}
-            className="form-control me-2"
+            className="pt-2 form-control me-2"
             placeholder="Contraseña"
           />
+          <input
+            name="remember password"
+            type="password"
+            value={user.rememberPassword}
+            className="pt-2 form-control me-2"
+            placeholder="Recordar contraseña"
+          />
+          <input
+            name="name"
+            type="name"
+            value={user.name}
+            className="pt-2 form-control me-2"
+            placeholder="Nombre"
+          />
+          <input
+            name="last name"
+            type="name"
+            value={user.lastName}
+            className="pt-2 form-control me-2"
+            placeholder="Apellido"
+          />
           <button class="btn btn-dark" type="submit">
-            Login
+            Registrar
           </button>
-          <button className="btn btn-online-dark" type="submit">
-            Recuperar contraseña
-          </button>
-          <Link to="/registro/">
-            <button className="btn btn-online-dark" type="submit">
-              Registro
-            </button>
-          </Link>
         </form>
       </div>
     </div>
