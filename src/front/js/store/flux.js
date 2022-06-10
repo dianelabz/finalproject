@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      inicio: [],
+      message: null,
       isAuth: localStorage.getItem("isAuth"),
       isAuth: false,
       user:
@@ -9,6 +11,29 @@ const getState = ({ getStore, getActions, setStore }) => {
           : JSON.parse(localStorage.getItem("user")),
     },
     actions: {
+      getInicio: () => {
+        const options = {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+            "X-RapidAPI-Key":
+              "2a81b6b994msh1264d57c9205c2ep164af6jsndcbec52c6734",
+            "Access-Control-Allow-Origin": "*",
+          },
+        };
+
+        fetch(
+          "https://streaming-availability.p.rapidapi.com/search/basic?country=cl&service=netflix&type=movie&genre=18&page=1&output_language=es&language=es",
+          options
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result.results);
+            setStore({ inicio: result.results });
+          })
+          .catch((err) => console.error(err));
+      },
+
       onSubmit: (e, user, history) => {
         e.preventDefault();
         fetch(process.env.BACKEND_URL + "/login", {

@@ -7,6 +7,8 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Registro } from "./pages/registro";
+import { Inicio } from "./pages/inicio";
+import { Recuperar } from "./pages/recuperar";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -34,6 +36,12 @@ const Layout = () => {
             </Route>
             <Route exact path="/registro">
               <Registro />
+            </Route>
+            <Route exact path="/recuperar">
+              <Recuperar />
+            </Route>
+            <Route exact path="/inicio">
+              <Inicio />
             </Route>
             <Route exact path="/single/:theid">
               <Single />

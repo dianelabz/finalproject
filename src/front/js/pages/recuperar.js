@@ -2,20 +2,18 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-export const Datos = () => {
+export const Recuperar = () => {
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState({
     email: "",
-    password: "",
-    rememberPassword: "",
-    name: "",
-    lastName: "",
+    newPassword: "",
+    repitPassword: "",
   });
 
   return (
     <div className="container">
       <div className="text-center mt-5">
-        <h1>Registro</h1>
+        <h1>Recuperar contraseña</h1>
       </div>
       <div className="input mt-5">
         <form onSubmit={(e) => actions.onSubmit(e, user, history)}>
@@ -27,39 +25,25 @@ export const Datos = () => {
             placeholder="Correo"
           />
           <input
-            name="password"
-            type="password"
-            value={user.password}
+            name="newPassword"
+            type="newPassword"
+            value={user.newPassword}
             className="pt-2 form-control me-2"
-            placeholder="Contraseña"
+            placeholder="Nueva Contraseña"
           />
           <input
-            name="remember password"
-            type="password"
-            value={user.rememberPassword}
+            name="repitPassword"
+            type="repitPassword"
+            value={user.repitPassword}
             className="pt-2 form-control me-2"
-            placeholder="Recordar contraseña"
-          />
-          <input
-            name="name"
-            type="name"
-            value={user.name}
-            className="pt-2 form-control me-2"
-            placeholder="Nombre"
-          />
-          <input
-            name="last name"
-            type="name"
-            value={user.lastName}
-            className="pt-2 form-control me-2"
-            placeholder="Apellido"
+            placeholder="Repetir contraseña"
           />
           <button
             class="btn btn-warning"
             type="submit"
             style={{ marginTop: "20px" }}
           >
-            Registrar
+            Login
           </button>
         </form>
       </div>

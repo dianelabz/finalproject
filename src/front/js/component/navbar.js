@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark">
+    <nav className="navbar navbar-warning bg-warning">
       <div className="container-fluid">
-        <a className="navbar-brand">Watchpo</a>
+        <h1 className="navbar-brand text-dark fs-4">Watchpo</h1>
         <form className="d-flex">
           <input
             className="form-control me-2"
@@ -13,7 +13,7 @@ export const Navbar = () => {
             placeholder="¿Qué quieres ver?"
             aria-label="Search"
           />
-          <button className="btn btn-outline-light" type="submit">
+          <button className="btn btn-outline-dark" type="submit">
             🎞️
           </button>
         </form>

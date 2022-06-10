@@ -22,7 +22,7 @@ export const Home = () => {
       <div className="text-center mt-5">
         <h1>Login</h1>
       </div>
-      <div className="input mt-5">
+      <div className="input text-center mt-5">
         <form onSubmit={(e) => actions.onSubmit(e, user, history)}>
           <input
             name="email"
@@ -31,6 +31,13 @@ export const Home = () => {
             onChange={HandleChange}
             className="form-control me-2"
             placeholder="Correo"
+            style={{
+              width: "500px",
+              margin: "0",
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: "300px",
+            }}
           />
           <input
             name="password"
@@ -39,17 +46,41 @@ export const Home = () => {
             onChange={HandleChange}
             className="form-control me-2"
             placeholder="Contraseña"
+            style={{
+              width: "500px",
+              marginLeft: "300px",
+            }}
           />
-          <button class="btn btn-dark" type="submit">
-            Login
-          </button>
-          <button className="btn btn-online-dark" type="submit">
-            Recuperar contraseña
-          </button>
           <Link to="/registro/">
-            <button className="btn btn-online-dark" type="submit">
+            <button
+              className="btn btn-warning"
+              type="submit"
+              style={{
+                padding: "5px",
+                marginTop: "10px",
+                marginRight: "5px",
+                marginLeft: "5px",
+              }}
+            >
               Registro
             </button>
+          </Link>
+          <button
+            class="btn btn-warning"
+            type="submit"
+            style={{
+              padding: "5px",
+              marginTop: "10px",
+              marginRight: "5px",
+              marginLeft: "5px",
+            }}
+          >
+            Login
+          </button>
+          <Link to="/recuperar/">
+            <a href="#" className="link">
+              Recuperar contraseña
+            </a>
           </Link>
         </form>
       </div>
